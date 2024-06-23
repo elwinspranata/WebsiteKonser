@@ -1,0 +1,23 @@
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const fullName = document.getElementById('fullName').value;
+  const concertName = document.getElementById('concertName').value;
+  const date = document.getElementById('date').value;
+  const seat = document.getElementById('seat').value;
+  const price = document.getElementById('price').value;
+
+  const ticketInfo = `
+    <div class="ticket">
+      <h2>${concertName}</h2>
+      <p>Nama Pemesan: ${fullName}</p>
+      <p>Tanggal: ${date}</p>
+      <p>Kursi: ${seat}</p>
+      <p>Harga: Rp${price}</p>
+    </div>
+  `;
+
+  document.getElementById('ticketList').insertAdjacentHTML('beforeend', ticketInfo);
+
+  document.getElementById('bookingForm').reset();
+});

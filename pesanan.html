@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pemesanan Tiket Konser</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="title">Pesan Tiket Konser Anda Sekarang!</h1>
+    <form id="bookingForm">
+      <div class="form-group">
+        <label for="fullName">Nama Lengkap:</label>
+        <input type="text" id="fullName" required />
+      </div>
+      <div class="form-group">
+        <label for="concertName">Nama Konser:</label>
+        <select id="concertName" required>
+          <option value="The Weeknd - Live in Concert">The Weeknd - Live in Concert</option>
+          <option value="Jazz Night with John Doe">Jazz Night with John Doe</option>
+          <option value="Rock Festival 2024">Rock Festival 2024</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Tanggal:</label>
+        <input type="date" id="date" required />
+      </div>
+      <div class="form-group">
+        <label for="seat">Nomor Kursi:</label>
+        <input type="text" id="seat" required />
+      </div>
+      <div class="form-group">
+        <label for="price">Harga (Rp):</label>
+        <input type="number" id="price" required />
+      </div>
+      <button type="submit" class="button">Pesan Tiket</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <h1 class="title">Daftar Tiket yang Dipesan</h1>
+    <div id="ticketList" class="ticket-list"></div>
+  </div>
+
+  <script>
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const fullName = document.getElementById('fullName').value;
+      const concertName = document.getElementById('concertName').value;
+      const date = document.getElementById('date').value;
+      const seat = document.getElementById('seat').value;
+      const price = document.getElementById('price').value;
+
+      const ticketInfo = `
+        <div class="ticket">
+          <h2>${concertName}</h2>
+          <p>Nama Pemesan: ${fullName}</p>
+          <p>Tanggal: ${date}</p>
+          <p>Kursi: ${seat}</p>
+          <p>Harga: Rp${price}</p>
+        </div>
+      `;
+
+      document.getElementById('ticketList').innerHTML += ticketInfo;
+
+      // Clear form
+      document.getElementById('bookingForm').reset();
+    });
+  </script>
+</body>
+</html>
